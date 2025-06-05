@@ -6,7 +6,7 @@ class Ejercicio2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title:  Text("Ejercicio 2")),
+      appBar: AppBar(title: const Text("Ejercicio 2")),
       body: Container(
         decoration:  BoxDecoration(
           image: DecorationImage(
@@ -18,11 +18,6 @@ class Ejercicio2 extends StatelessWidget {
           child: SingleChildScrollView(
             padding:  EdgeInsets.all(16),
             child: Container(
-              padding:  EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                //color: Colors.white.withOpacity(0.8),
-                borderRadius: BorderRadius.circular(10),
-              ),
               child: ingresoDatos(context),
             ),
           ),
@@ -32,9 +27,9 @@ class Ejercicio2 extends StatelessWidget {
   }
 }
 
-Widget ingresoDatos(BuildContext context) {
-  TextEditingController masaCtrl = TextEditingController();
-  TextEditingController velocidadCtrl = TextEditingController();
+Widget ingresoDatos( context) {
+  TextEditingController masa = TextEditingController();
+  TextEditingController velocidad = TextEditingController();
 
   return Column(
     mainAxisSize: MainAxisSize.min,
@@ -45,7 +40,7 @@ Widget ingresoDatos(BuildContext context) {
       ),
       SizedBox(height: 20),
       TextField(
-        controller: masaCtrl,
+        controller: masa,
         keyboardType: TextInputType.number,
         decoration: InputDecoration(
           labelText: "Masa (kg)",
@@ -54,7 +49,7 @@ Widget ingresoDatos(BuildContext context) {
       ),
       SizedBox(height: 15),
       TextField(
-        controller: velocidadCtrl,
+        controller: velocidad,
         keyboardType: TextInputType.number,
         decoration: InputDecoration(
           labelText: "Velocidad (m/s)",
@@ -63,11 +58,11 @@ Widget ingresoDatos(BuildContext context) {
       ),
        SizedBox(height: 20),
       ElevatedButton(
-        onPressed: () => mostrarResultado(context, masaCtrl, velocidadCtrl),
+        onPressed: () => mostrarResultado(context, masa, velocidad),
         child: Text("CALCULAR"),
       ),
        SizedBox(height: 10),
-      
+     
     ],
   );
 }
@@ -90,9 +85,9 @@ void mostrarResultado( context, masa,velocidad) {
   );
 }
 
-String calcularEnergia(String _masa, String _velocidad) {
-  double? masa = double.parse(_masa);
-  double? velocidad = double.parse(_velocidad);
+String calcularEnergia(String masaS, String velocidadS) {
+  double? masa = double.parse(masaS);
+  double? velocidad = double.parse(velocidadS);
 
   if (masa <0 || velocidad <0) {
     return "Por favor, ingresa valores numéricos válidos.";
